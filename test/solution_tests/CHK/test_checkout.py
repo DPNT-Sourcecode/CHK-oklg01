@@ -34,3 +34,6 @@ class TestCheckout:
 
     def test_checkout_special_free_item_no_condition(self):
         assert checkout_solution.checkout("EEEE") == 160
+
+    def test_new_offer_wording(self):
+        assert checkout_solution.checkout("AFFFB") == 100

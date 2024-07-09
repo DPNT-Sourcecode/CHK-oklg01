@@ -8,6 +8,7 @@ from collections import Counter
 # | C    | 20    |                        |
 # | D    | 15    |                        |
 # | E    | 40    | 2E get one B free      |
+# | F    | 10    | 2F get one F free      |
 # +------+-------+------------------------+
 
 SKUS = {
@@ -15,7 +16,8 @@ SKUS = {
     "B": 30,
     "C": 20,
     "D": 15,
-    "E": 40
+    "E": 40,
+    "F": 10
 }
 
 SPECIALS = {
@@ -27,7 +29,8 @@ SPECIALS = {
 SPECIALS =[{"product": "A", "num": 5, "discount": 50},
             {"product": "A", "num": 3, "discount": 20},
             {"product": "E", "num": 2, "discount": 30, "condition": "B"},
-            {"product": "B", "num": 2, "discount": 15}]
+            {"product": "B", "num": 2, "discount": 15},
+           {"product": "F", "num": 3, "discount": 10, "condition": "F"}]
 
 def apply_specials_discount(item_counts):
     discount_total = 0
@@ -69,6 +72,4 @@ def checkout(skus):
     discounts = apply_specials_discount(Counter(skus))
 
     return total_price - discounts
-
-
 
