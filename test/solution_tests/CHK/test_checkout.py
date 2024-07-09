@@ -17,5 +17,5 @@ class TestCheckout:
     def test_checkout_invalid_sku_list(self):
         assert checkout_solution.checkout("A,B,E") == -1
 
-    de(self):
-        assert checkout_solution.checkout("A,B,C") == -1
+    def test_checkout_sku_list_whitespace(self):
+        assert checkout_solution.checkout("A, B,  C") == 100
