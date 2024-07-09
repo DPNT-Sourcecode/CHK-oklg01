@@ -1,3 +1,4 @@
+from collections import Counter
 
 # +------+-------+----------------+
 # | Item | Price | Special offers |
@@ -14,6 +15,22 @@ SKUS = {
     "C": 20,
     "D": 15
 }
+
+SPECIALS = {
+    "A": {"num": 3, "discount": 20},
+    "B": {"num": 2, "discount": 15}
+}
+
+def apply_specials_discount(item_counts):
+    discount_total = 0
+    for special, details in SPECIALS.items():
+        if special in item_counts:
+            item_count = item_counts[special]
+            if item_count >= details["num"]:
+                discount_total += (details["num"] // item_count) * details["discount"]
+    return discount_total
+
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -30,5 +47,8 @@ def checkout(skus):
 
         total_price += SKUS[sku]
 
-    return total_price
+    discounts = apply_specials_discount(Counter(skus))
+
+    return total_price - discounts
+
 
