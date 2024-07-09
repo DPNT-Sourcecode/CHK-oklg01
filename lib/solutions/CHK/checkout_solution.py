@@ -101,6 +101,9 @@ def apply_specials_discount(item_counts):
                 products_used_in_discount = sorted_products[:discount_multiple * quantity]
                 price_of_items = sum(SKUS[p] for p in products_used_in_discount)
                 discount_total += discount_multiple * (price_of_items - discount)
+                print(discount_total)
+                print(price_of_items)
+                print(discount)
                 for prod in products_used_in_discount:
                     item_counts[prod] -= 1
 
