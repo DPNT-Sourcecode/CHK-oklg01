@@ -68,7 +68,7 @@ SPECIALS = [
     {"product": "F", "num": 3, "discount": 10, "condition": "F"},
     {"product": "H", "num": 10, "discount": 20},
     {"product": "H", "num": 5, "discount": 5},
-    {"product": "K", "num": 2, "discount": 10},
+    {"product": "K", "num": 2, "discount": 20},
     {"product": "N", "num": 3, "discount": 15, "condition": "M"},
     {"product": "P", "num": 5, "discount": 50},
     {"product": "R", "num": 3, "discount": 30, "condition": "Q"},
@@ -140,6 +140,7 @@ def checkout(skus):
     discount = apply_specials_discount(Counter(skus))
 
     return total_price - discount
+
 
 
 
