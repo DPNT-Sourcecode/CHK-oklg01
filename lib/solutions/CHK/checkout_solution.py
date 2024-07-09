@@ -24,13 +24,21 @@ SPECIALS = {
     "E": {"num": 2, "discount": 30, "condition": "B"}
 }
 
+SPECIALS = [{"product": "A", "num": 3, "discount": 20},
+            {"product": "A", "num": 5, "discount": 50},
+            {"product": "B", "num": 2, "discount": 15},
+            {"product": "E", "num": 2, "discount": 30, "condition": "B"}]
+
 def apply_specials_discount(item_counts):
     discount_total = 0
-    for special, details in SPECIALS.items():
-        if special in item_counts:
-            item_count = item_counts[special]
-            if item_count >= details["num"]:
-                discount_total += (item_count // details["num"]) * details["discount"]
+    for details in SPECIALS:
+        product = details["product"]
+        quantity = details["num"]
+        discount = details["discount"]
+        if product in item_counts:
+            item_count = item_counts[product]
+            if item_count >= quantity:
+                discount_total += (item_count // quantity) * discount
     return discount_total
 
 
@@ -50,4 +58,5 @@ def checkout(skus):
     discounts = apply_specials_discount(Counter(skus))
 
     return total_price - discounts
+
 
