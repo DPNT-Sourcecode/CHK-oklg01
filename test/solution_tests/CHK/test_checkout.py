@@ -46,6 +46,6 @@ class TestCheckout:
     def test_new_products(self, basket, value):
         assert checkout_solution.checkout(basket) == value
 
-    @pytest.mark.parametrize("basket,value", [("XYZ", 45), ("XYZXYZ", 90), ("XYZST", 82), ("YXYZST", 90)])
+    @pytest.mark.parametrize("basket,value", [("XYZ", 45), ("XYZXYZ", 90), ("XYZST", 82), ("YXYZST", 90), ("YXXYZST", 107)])
     def test_group_discount(self, basket, value):
         assert checkout_solution.checkout(basket) == value
