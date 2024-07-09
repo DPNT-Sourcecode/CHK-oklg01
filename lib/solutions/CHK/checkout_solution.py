@@ -24,8 +24,8 @@ SPECIALS = {
     "E": {"num": 2, "discount": 30, "condition": "B"}
 }
 
-SPECIALS = [{"product": "A", "num": 3, "discount": 20},
-            {"product": "A", "num": 5, "discount": 50},
+SPECIALS =[{"product": "A", "num": 5, "discount": 50},
+            {"product": "A", "num": 3, "discount": 20},
             {"product": "B", "num": 2, "discount": 15},
             {"product": "E", "num": 2, "discount": 30, "condition": "B"}]
 
@@ -38,7 +38,10 @@ def apply_specials_discount(item_counts):
         if product in item_counts:
             item_count = item_counts[product]
             if item_count >= quantity:
-                discount_total += (item_count // quantity) * discount
+                discount_multiple = item_count // quantity
+                discount_total += discount_multiple * discount
+                items_used = quantity * discount_multiple
+                item_counts[product] -= items_used
     return discount_total
 
 
