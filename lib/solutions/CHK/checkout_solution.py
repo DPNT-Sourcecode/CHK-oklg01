@@ -76,7 +76,7 @@ SPECIALS = [
     {"product": "U", "num": 4, "discount": 40, "condition": "U"},
     {"product": "V", "num": 3, "discount": 20},
     {"product": "V", "num": 2, "discount": 10},
-    {"product": "STXYZ", "num": 3, "group_discount": True}
+    {"product": "STXYZ", "num": 3, "discount": 45, "group_discount": True}
 ]
 
 def apply_specials_discount(item_counts):
@@ -84,7 +84,7 @@ def apply_specials_discount(item_counts):
     for details in SPECIALS:
         product = details["product"]
         quantity = details["num"]
-        discount = details.get("discount")
+        discount = details["discount"]
         condition = details.get("condition")
         group_discount = details.get("group_discount")
 
@@ -94,14 +94,14 @@ def apply_specials_discount(item_counts):
 
         if group_discount:
             sorted_products = sorted(product, key=lambda p: SKUS[p], reverse=True)
-            group_items_count = sum((item_counts.get(p) for p in sorted_products))
+            group_items_count = sum((item_counts.get(p) or 0 for p in sorted_products))
             if group_items_count >= quantity:
                 discount_multiple = group_items_count // quantity
-                discount_total += discount_multiple * discount
-                items_used = quantity * discount_multiple
-                item_counts[product] -= items_used
-                if condition:
-                    item_counts[condition] -= 1
+                products_used_in_discount = sorted_products[:discount_multiple * quantity]
+                price_of_items = sum(SKUS[p] for p in products_used_in_discount)
+                discount_total += price_of_items - 45
+                for prod in products_used_in_discount:
+                    item_counts[prod] -= 1
 
         elif product in item_counts:
             item_count = item_counts[product]
