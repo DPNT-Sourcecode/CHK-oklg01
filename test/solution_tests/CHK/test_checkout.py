@@ -42,6 +42,6 @@ class TestCheckout:
     def test_new_offer_wording_not_enough(self):
         assert checkout_solution.checkout("AFFB") == 100
 
-    @pytest.mark.parametrize("basket,value", [("VVVVV", 220), ("UUUU", 120), ("UUU", 120), ("RRRQ", 150), ("RRR", 150)])
+    @pytest.mark.parametrize("basket,value", [("VVVVV", 220), ("UUUU", 120), ("UUU", 120), ("RRRQ", 150), ("RRR", 150), ("RRRQQQ", 210), ("QQQPPPPP", 280), ("MNNN", 120), ("NNN", 120), ("KK", 150)])
     def test_new_products(self, basket, value):
         assert checkout_solution.checkout(basket) == value
