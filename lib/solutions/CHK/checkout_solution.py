@@ -20,8 +20,13 @@ def checkout(skus):
     if not skus:
         return -1
 
-    if skus not in SKUS:
-        return -1
+    sku_list = skus.split(",")
+    total_price = 0
+    for sku in sku_list:
+        if sku not in SKUS:
+            return -1
 
-    return SKUS[skus]
+        total_price += SKUS[sku]
+
+    return total_price
 
