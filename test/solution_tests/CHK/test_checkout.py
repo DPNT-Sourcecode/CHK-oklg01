@@ -28,3 +28,6 @@ class TestCheckout:
 
     def test_checkout_dup_special_same_item(self):
         assert checkout_solution.checkout("AAAAA") == 200
+
+    def test_checkout_special_free_item(self):
+        assert checkout_solution.checkout("EEBB") == 110
