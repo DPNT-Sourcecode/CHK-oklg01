@@ -6,7 +6,7 @@ class TestCheckout:
         assert checkout_solution.checkout("") == 0
 
     def test_checkout_invalid_sku(self):
-        assert checkout_solution.checkout("Z") == -1
+        assert checkout_solution.checkout("*") == -1
 
     def test_checkout_valid_sku(self):
         assert checkout_solution.checkout("A") == 50
@@ -15,7 +15,7 @@ class TestCheckout:
         assert checkout_solution.checkout("ABC") == 100
 
     def test_checkout_sku_invalid_list(self):
-        assert checkout_solution.checkout("ABZ") == -1
+        assert checkout_solution.checkout("AB*") == -1
 
     def test_checkout_sku_whitespace(self):
         assert checkout_solution.checkout("AB   C") == -1
@@ -40,3 +40,7 @@ class TestCheckout:
 
     def test_new_offer_wording_not_enough(self):
         assert checkout_solution.checkout("AFFB") == 100
+
+    @param
+    def test_new_products(self):
+        assert checkout_solution.checkout("VVVVV") == 220
