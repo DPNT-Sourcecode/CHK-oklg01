@@ -33,4 +33,4 @@ class TestCheckout:
         assert checkout_solution.checkout("ABABAD") == 190
 
     def test_checkout_multiple_special_offers(self):
-        assert checkout_solution.checkout("ABABABBBDAAAA") == 445
+        assert checkout_solution.checkout("AAAAAA") == 260

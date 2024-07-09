@@ -27,7 +27,8 @@ def apply_specials_discount(item_counts):
         if special in item_counts:
             item_count = item_counts[special]
             if item_count >= details["num"]:
-                discount_total += (details["num"] // item_count) * details["discount"]
+                print((details["num"] // item_count) * details["discount"])
+                discount_total += ((details["num"] // item_count) * details["discount"])
     return discount_total
 
 
