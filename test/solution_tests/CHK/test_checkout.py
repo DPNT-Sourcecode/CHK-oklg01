@@ -37,3 +37,6 @@ class TestCheckout:
 
     def test_new_offer_wording(self):
         assert checkout_solution.checkout("AFFFB") == 100
+
+    def test_new_offer_wording_not_enough(self):
+        assert checkout_solution.checkout("AFFB") == 100
