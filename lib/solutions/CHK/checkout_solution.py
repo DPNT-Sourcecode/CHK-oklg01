@@ -40,8 +40,6 @@ def apply_specials_discount(item_counts):
         if condition:
             if not item_counts.get(condition) or not item_counts.get(condition) > 0:
                 continue
-            else:
-                item_counts[condition] -= 1
 
         if product in item_counts:
             item_count = item_counts[product]
@@ -50,6 +48,8 @@ def apply_specials_discount(item_counts):
                 discount_total += discount_multiple * discount
                 items_used = quantity * discount_multiple
                 item_counts[product] -= items_used
+                if condition:
+                    item_counts[condition] -= 1
     return discount_total
 
 

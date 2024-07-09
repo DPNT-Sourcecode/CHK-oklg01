@@ -31,3 +31,6 @@ class TestCheckout:
 
     def test_checkout_special_free_item(self):
         assert checkout_solution.checkout("EEBB") == 110
+
+    def test_checkout_special_free_item_no_condition(self):
+        assert checkout_solution.checkout("EEEE") == 160
