@@ -35,10 +35,7 @@ def apply_specials_discount(item_counts):
 # skus = unicode string
 def checkout(skus):
     if not skus:
-        return -1
-
-    # if "," in skus:
-    #     sku_list = [s.strip() for s in skus.split(",")]
+        return 0
 
     total_price = 0
     for sku in skus:
@@ -50,6 +47,7 @@ def checkout(skus):
     discounts = apply_specials_discount(Counter(skus))
 
     return total_price - discounts
+
 
 
 
