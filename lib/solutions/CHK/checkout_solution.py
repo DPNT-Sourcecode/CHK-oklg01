@@ -20,7 +20,12 @@ def checkout(skus):
     if not skus:
         return -1
 
-    sku_list = [s.strip() for s in skus.split(",")]
+    if "," in skus:
+        sku_list = [s.strip() for s in skus.split(",")]
+
+    else:
+        sku_list = skus.strip()
+
     total_price = 0
     for sku in sku_list:
         if sku not in SKUS:
@@ -29,4 +34,5 @@ def checkout(skus):
         total_price += SKUS[sku]
 
     return total_price
+
 
