@@ -93,7 +93,7 @@ def apply_specials_discount(item_counts):
                 continue
 
         if group_discount:
-            available_products = [p for p in product if item_counts.get(p)]
+            available_products = [p * item_counts.get(p) for p in product if item_counts.get(p)]
             sorted_products = sorted(available_products, key=lambda p: SKUS[p], reverse=True)
             group_items_count = sum((item_counts.get(p) for p in sorted_products))
             if group_items_count >= quantity:
@@ -101,7 +101,8 @@ def apply_specials_discount(item_counts):
                 products_used_in_discount = sorted_products[:discount_multiple * quantity]
                 price_of_items = sum(SKUS[p] for p in products_used_in_discount)
                 discount_total += discount_multiple * (price_of_items - discount)
-                print(discount_total)
+                print(available_products)
+                print(discount_multiple)
                 print(price_of_items)
                 print(discount)
                 for prod in products_used_in_discount:
@@ -138,4 +139,5 @@ def checkout(skus):
     discount = apply_specials_discount(Counter(skus))
 
     return total_price - discount
+
 
