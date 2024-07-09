@@ -1,24 +1,27 @@
 from collections import Counter
 
-# +------+-------+----------------+
-# | Item | Price | Special offers |
-# +------+-------+----------------+
-# | A    | 50    | 3A for 130     |
-# | B    | 30    | 2B for 45      |
-# | C    | 20    |                |
-# | D    | 15    |                |
-# +------+-------+----------------+
+# +------+-------+------------------------+
+# | Item | Price | Special offers         |
+# +------+-------+------------------------+
+# | A    | 50    | 3A for 130, 5A for 200 |
+# | B    | 30    | 2B for 45              |
+# | C    | 20    |                        |
+# | D    | 15    |                        |
+# | E    | 40    | 2E get one B free      |
+# +------+-------+------------------------+
 
 SKUS = {
     "A": 50,
     "B": 30,
     "C": 20,
-    "D": 15
+    "D": 15,
+    "E": 40
 }
 
 SPECIALS = {
-    "A": {"num": 3, "discount": 20},
-    "B": {"num": 2, "discount": 15}
+    "A": [{"num": 3, "discount": 20}, {"num": 5, "discount": 50}],
+    "B": {"num": 2, "discount": 15},
+    "E": {"num": 2, "discount": 30, "condition": "B"}
 }
 
 def apply_specials_discount(item_counts):
