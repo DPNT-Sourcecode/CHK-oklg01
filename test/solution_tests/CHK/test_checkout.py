@@ -1,3 +1,4 @@
+import pytest
 from solutions.CHK import checkout_solution
 
 
@@ -41,6 +42,6 @@ class TestCheckout:
     def test_new_offer_wording_not_enough(self):
         assert checkout_solution.checkout("AFFB") == 100
 
-    @param
-    def test_new_products(self):
-        assert checkout_solution.checkout("VVVVV") == 220
+    @pytest.mark.parametrize("basket,value", [("VVVVV", 220), ("UUUU", 120), ("UUU", 120), ("RRRQ", 150), ("RRR", 150)])
+    def test_new_products(self, basket, value):
+        assert checkout_solution.checkout(basket) == value

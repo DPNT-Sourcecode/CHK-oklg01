@@ -60,12 +60,6 @@ SKUS = {
     "Z": 50,
 }
 
-SPECIALS = {
-    "A": [{"num": 3, "discount": 20}, {"num": 5, "discount": 50}],
-    "B": {"num": 2, "discount": 15},
-    "E": {"num": 2, "discount": 30, "condition": "B"}
-}
-
 SPECIALS = [
     {"product": "A", "num": 5, "discount": 50},
     {"product": "A", "num": 3, "discount": 20},
@@ -79,7 +73,7 @@ SPECIALS = [
     {"product": "P", "num": 5, "discount": 50},
     {"product": "R", "num": 3, "discount": 30, "condition": "Q"},
     {"product": "Q", "num": 3, "discount": 10},
-    {"product": "U", "num": 3, "discount": 40, "condition": "U"},
+    {"product": "U", "num": 4, "discount": 40, "condition": "U"},
     {"product": "V", "num": 3, "discount": 20},
     {"product": "V", "num": 2, "discount": 10},
 ]
